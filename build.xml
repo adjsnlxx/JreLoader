@@ -12,7 +12,8 @@
 		<copy todir="target/classes">
 			<fileset dir="src" includes="**/*.xml,**/*.properties" />
 		</copy>
-		<javac destdir="target/classes" target="1.5" source="1.5" debug="true">
+
+		<javac destdir="target/classes" target="1.8" source="1.8" debug="true">
 			<src path="src" />
 			<classpath>
 				<fileset dir="lib" includes="*.jar" />
@@ -21,16 +22,18 @@
 		<!--
 		<mkdir dir="${deploy.dir}/lib" />
 		-->
+		<!--
 		<copy file="LICENSE-2.0.txt" todir="${deploy.dir}" />
 		<copy file="CHANGELOG.txt" todir="${deploy.dir}" />
 		<copy file="INSTALL.txt" todir="${deploy.dir}" />
+		-->
 	</target>
 
 	<target name="build" depends="compile">
 		<!-- Create the special jar for the agent -->
-		<jarjar jarfile="${deploy.dir}/${name}.jar" basedir="target/classes" index="yes" includes="com/road/yishi/**/*.*">
+		<jarjar jarfile="${deploy.dir}/${name}.jar" basedir="target/classes" index="yes" includes="com/hx/lxx/**/*.*">
 			<manifest>
-				<attribute name="Premain-Class" value="com.road.yishi.Agent" />
+				<attribute name="Premain-Class" value="com.hx.lxx.Agent" />
 				<attribute name="Boot-Class-Path" value="${name}.jar" />
 				<attribute name="Can-Redefine-Classes" value="true" />
 			</manifest>
